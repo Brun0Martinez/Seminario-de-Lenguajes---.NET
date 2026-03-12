@@ -8,3 +8,15 @@ write: Escribe la representación de texto de los objetos especificados en el fl
 writeLine: Escribe la representación de texto de los objetos especificados, seguida del terminador de línea actual, en el flujo de salida estándar usando la información de formato especificada.
 
 La diferencia entre los metodos Write() y WriteLine() es que el metodo WriteLine() de la clase System.Console agrega un salto de linea al final del texto (seguida del terminador de linea actual);
+
+¿Cómo funciona el método ReadKey() de la misma clase?
+Obtiene la siguiente tecla de carácter presionada por el usuario. La tecla presionada se muestra en la ventana de la consola.
+
+Escribir un programa que imprima en la consola la frase “Hola Mundo” haciendo una
+pausa entre palabra y palabra esperando a que el usuario presione una tecla para continuar.
+Tip: usar los métodos ReadKey() y Write() de la clase System.Console
+
+Console.Write("Hola");
+Console.ReadKey(true);
+Console.Write("Mundo");
+Console.ReadKey(true);
