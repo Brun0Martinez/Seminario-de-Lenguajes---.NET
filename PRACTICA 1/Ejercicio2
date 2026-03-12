@@ -1,0 +1,11 @@
+2) Investigar por las secuencias de escape \n, \t , \" y \\. Escribir un programa que las utilice para imprimir distintos mensajes en la consola.
+\n	Nueva línea
+\t	Tabulación horizontal
+\"	Comillas dobles
+\\	Barra diagonal inversa
+Importante entender que es entre la cadena de string, no al terminar, sino que entre caracteres
+Console.Write("Hola\nMundo");
+Console.Write("Hola\tMundo");
+Console.Write("Hola\"Mundo");
+Console.Write("Hola\\Mundo");
+Console.ReadLine();
