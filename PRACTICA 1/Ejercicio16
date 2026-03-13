@@ -1,1 +1,14 @@
+16) Analizar el siguiente código. ¿Cuál es la salida por consola?
+int i = 1;
+if (--i == 0)
+{
+Console.WriteLine("cero");
+}
+if (i++ == 0)
+{
+Console.WriteLine("cero");
+}
+Console.WriteLine(i);
 
+La salida en consola es cero,cero,1 
+Porque el primero al ser preIncremento se ve reflejado, luego el postIncremento lo hace luego del if, por tanto entra y termina imprimiendo 1
