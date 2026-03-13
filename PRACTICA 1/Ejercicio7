@@ -1,0 +1,3 @@
+7) Qué hace la instrucción Console.WriteLine("100".Length); ?
+
+Lo que hace la instruccion .Length es darnos la cantidad de caracteres comprendida entre las comillas ""
