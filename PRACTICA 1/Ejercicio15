@@ -1,0 +1,10 @@
+15) ¿Cuál es el problema del código siguiente y cómo se soluciona?
+
+int i = 0;
+for (int i = 1; i <= 10;)
+{
+Console.WriteLine(i++);
+}
+
+El problema de este codigo es que estamos declarando dos veces una variable i, y el programa nos dice que ya existe una variable en el 
+ambito local con ese nombre
