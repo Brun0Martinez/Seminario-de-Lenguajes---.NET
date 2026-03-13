@@ -1,0 +1,13 @@
+14) Utilizar el operador ternario condicional para establecer el contenido de una variable entera con el
+menor valor de otras dos variables enteras.
+
+Console.WriteLine("Ingrese valor 1");
+int v1 = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Ingrese valor 2");
+int v2 = int.Parse(Console.ReadLine());
+
+int n = (v1 > v2) ? v2 : v1;
+
+Console.WriteLine(n);
+Console.ReadLine();
