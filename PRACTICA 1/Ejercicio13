@@ -2,3 +2,4 @@
 expresión. Tip: observar qué pasa cuando b = 0.
 if ((b != 0) & (a/b > 5)) Console.WriteLine(a/b);
 
+El problema es que & evalúa la primer condición y si es falsa de igual forma realiza la segunda condición, si es 0 esto daría error. La solución es utilizar &&, porque si la primer condición no entra, no evalúa la segunda.
