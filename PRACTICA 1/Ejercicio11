@@ -1,0 +1,7 @@
+11) Comprobar el funcionamiento del siguiente fragmento de código, analizar el resultado y contestar
+las preguntas. 
+a) ¿Qué se puede concluir respecto del operador de división “/” ?
+b) ¿Cómo funciona el operador + entre un string y un dato numérico?
+
+a) Concluimos que el operador / cambia dependiendo los tipos de datos involucrados en la operacion. Si tenemos una division entera (dos enteros) el resultado será entero. Pero si uno de los dos es double, el resultado será con double.
+b) Cuando utilizamos el operador + en un string, este reconoce que queremos agregar un dato al string que tengamos. Cuando trabajamos con datos numericos, realiza una suma entre ellos. 
