@@ -1,0 +1,39 @@
+8) Investigar acerca de la clase StringBuilder del espacio de nombre System.Text ¿En qué
+circunstancias es preferible utilizar StringBuilder en lugar de utilizar string? Implementar un
+caso de ejemplo en el que el rendimiento sea claramente superior utilizando StringBuilder en lugar
+de string y otro en el que no.
+
+StringBuilder es una clase del espacio System.Text que proporciona una secuencia mutable de caracteres. 
+A diferencia de la clase String (que es inmutable), StringBuilder permite modificar secuencias de caracteres sin crear nuevos objetos,
+lo que lo hace eficiente en memoria y más rápido para operaciones frecuentes de cadena.
+Es preferible utilizarlo en circustancias donde necesitemos textos largos o en repetidas concatenaciones.
+Ej: 
+using System.Text;
+
+string st = "";
+int i;
+for (i=0; i<10; i++)
+{
+    st+=i;
+}
+Console.WriteLine(st);
+Console.ReadKey();
+
+StringBuilder sb = new StringBuilder ("Hola");
+
+for(i=0; i<10; i++)
+{
+    sb.Append(i);
+}
+string s = sb.ToString();
+
+
+Console.WriteLine(s);
+Console.ReadKey();
+
+//Ejemplo en el que si mejora mucho el uso de SB porque en el primer for, en cada vuelta se crea un string distinto. En cambio con SB modoficiamos el mismo.
+
+string nombre = "Bruno";
+string saludo = "Hola" + nombre;
+
+//En este caso es innecesario el SB porque es una concatenacion simple. Es conveniente un st cuando sabemos que no vamos a variar mucho el tamaño del texto.
