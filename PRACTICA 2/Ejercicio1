@@ -5,3 +5,5 @@
   Console.WriteLine(o1 + " " + o2);
 El tipo object es un tipo referencia, por lo tanto luego de la sentencia o2 = o1 ambas variables están
 apuntando a la misma dirección. ¿Cómo explica entonces que el resultado en la consola no sea “Z Z”?
+
+Luego de la sentencia o2 = o1, se realiza o2="Z", creando una nueva direccion de memoria para la variable o2, ahora con valor "Z".
