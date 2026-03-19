@@ -1,9 +1,15 @@
 2) Qué líneas del siguiente código provocan conversiones boxing y unboxing ?
   char c1 = 'A';
   string st1 = "A";
-  object o1 = c1;
+  object o1 = c1; 
   object o2 = st1;
   char c2 = (char)o1;
   string st2 = (string)o2;
 
-o = i => boxing (variable de valor se asigna a una de referencia)
+*o = i => boxing (variable de valor se asigna a una de referencia)
+*int i = (int)o => unboxing (variable de referencia se asigna a una de valor)
+
+Las lineas que provocan estas conversiones son:
+  - object o1 = c1;  --> boxing 
+  - char c2 = (char)o1 --> unboxing 
+  
