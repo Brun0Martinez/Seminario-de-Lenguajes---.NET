@@ -1,0 +1,40 @@
+9) Investigar sobre el tipo DateTime y usarlo para medir el tiempo de ejecución de los algoritmos
+implementados en el ejercicio anterior. 
+
+Representa un instante en el tiempo, típicamente expresado como una fecha y hora del día.
+
+using System.Text;
+DateTime inicio = DateTime.Now;
+string st = "";
+int i;
+for (i=0; i<10; i++)
+{
+    st+=i;
+}
+Console.WriteLine(st);
+Console.ReadKey();
+
+StringBuilder sb = new StringBuilder ("Hola");
+
+for(i=0; i<10; i++)
+{
+    sb.Append(i);
+}
+string s = sb.ToString();
+
+
+Console.WriteLine(s);
+Console.ReadKey();
+
+//Ejemplo en el que si mejora mucho el uso de SB porque en el primer for, en cada vuelta se crea un string distinto. En cambio con SB modoficiamos el mismo.
+
+string nombre = "Bruno";
+string saludo = "Hola" + nombre;
+
+//En este caso es innecesario el SB porque es una concatenacion simple. Es conveniente un st cuando sabemos que no vamos a variar mucho el tamaño del texto.
+
+
+DateTime fin = DateTime.Now;
+
+Console.WriteLine(fin - inicio);
+Console.ReadKey();
