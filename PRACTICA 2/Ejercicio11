@@ -1,0 +1,16 @@
+11) ¿Para qué sirve el método Split de la clase string? Usarlo para escribir en la consola todas las
+palabras (una por línea) de una frase ingresada por consola por el usuario.
+
+El método String.Split crea una matriz de subcadenas mediante la división de la cadena de entrada en función de uno o varios delimitadores. 
+A menudo, este método es la manera más fácil de separar una cadena en límites de palabras.
+
+Console.WriteLine("Ingrese frase");
+string frase = Console.ReadLine();
+
+string [] palabras = frase.Split();
+
+foreach(string palabra in palabras)
+{
+    Console.WriteLine(palabra);
+}
+Console.ReadKey();
