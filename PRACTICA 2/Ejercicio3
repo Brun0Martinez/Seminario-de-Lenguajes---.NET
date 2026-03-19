@@ -1,0 +1,6 @@
+3) ¿Qué diferencias existen entre las conversiones de tipo implícitas y explícitas?
+
+La diferencia es que las conversiones de tipo implicitas son seguras porque no existe riesgo de perdida de informacion (un valor entra bien dentro del otro). 
+En las conversiones explicitas si existe el riesgo de perdidas de info. asique necesitamos operadores de conversion para realizarlas. 
+Otra diferencia es que las implicitas las realiza el programa (por su seguridad) y las explicitas las realiza el programador y asume el riesgo cuando los tipos son distintos.
+
