@@ -1,0 +1,13 @@
+7) ¿Cuál es la salida por consola del siguiente fragmento de código? ¿Por qué la tercera y sexta línea
+producen resultados diferentes?
+char c1 = 'A';
+char c2 = 'A';
+Console.WriteLine(c1 == c2);
+object o1 = c1;
+object o2 = c2;
+Console.WriteLine(o1 == o2);
+
+La salida de consola de la linea 3 es true y la linea 6 es false. Esto ocurre porque al asignar a c1 y c2 el mismo valor 'A', las variables
+toman el mismo valor y su comparacion es verdadera. 
+Cuando asignamos o1=c1 y o2=c2, no estamos copiando el valor de las variables c en los objetos, sino que o1 y o2 guardan en la heap los valores 'A' (en lugares
+distintos) y en la pila almacenan la direccion donde esta cada objeto. La comparacion resulta false porque compara las direcciones de la pila.
