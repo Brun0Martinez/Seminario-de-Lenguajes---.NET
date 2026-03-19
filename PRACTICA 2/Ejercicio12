@@ -1,0 +1,19 @@
+12) Definir el tipo de datos enumerativo llamado Meses y utilizarlo para:
+a) Imprimir en la consola el nombre de cada uno de los meses en orden inverso (diciembre,
+noviembre, octubre ..., enero)
+
+for(Meses mes = Meses.Diciembre; mes >= Meses.Enero; mes--)
+{
+    Console.WriteLine(mes);
+}
+Console.ReadKey();
+enum Meses
+{
+    Enero,Febrero,Marzo,
+    Abril,Mayo,Junio,
+    Julio,Agosto,Septiembre,
+    Octubre,Noviembre,Diciembre
+}
+
+b) Solicitar al usuario que ingrese un texto y responder si el texto tipeado corresponde al nombre de
+un mes
