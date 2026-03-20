@@ -17,3 +17,31 @@ enum Meses
 
 b) Solicitar al usuario que ingrese un texto y responder si el texto tipeado corresponde al nombre de
 un mes
+
+using System.ComponentModel.DataAnnotations;
+
+Console.WriteLine("Ingrese un texto");
+string texto = Console.ReadLine();
+
+string [] palabra = texto.Split();
+
+for(Meses mes = Meses.Diciembre; mes >= Meses.Enero; mes--)
+{
+    Console.WriteLine(mes);
+}
+Console.ReadKey();
+
+Meses mes;
+
+for(int i=0; i<= palabra.Length; i++)
+{
+    
+}
+
+enum Meses
+{
+    Enero,Febrero,Marzo,
+    Abril,Mayo,Junio,
+    Julio,Agosto,Septiembre,
+    Octubre,Noviembre,Diciembre
+}
