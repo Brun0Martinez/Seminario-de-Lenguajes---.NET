@@ -1,0 +1,20 @@
+19) Idem. al ejercicio 18.a) y 18.b) pero devolviendo el resultado en un parámetro de salida void
+Fac(int n, out int f)
+
+{
+int numero = int.Parse(args[0]);
+int resultado;
+Fac(numero,out resultado);
+Console.WriteLine(resultado);
+Console.Read();
+
+static void Fac(int n, out int resultado)
+{
+    int multi = 1;
+    for(int i = n; i > 0; i--)
+    {
+        multi = multi * i;
+    }
+    resultado = multi;
+}
+} 
