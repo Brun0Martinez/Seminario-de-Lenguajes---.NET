@@ -4,3 +4,64 @@ cuadrada generar una excepción ArgumentException.
 double[] GetDiagonalPrincipal(double[,] matriz)
 double[] GetDiagonalSecundaria(double[,] matriz)
 
+using System;
+
+double[,] matriz = new double[,]
+{
+    {1.2,3.2,3.2},
+    {1.2,3.2,6.4},
+    {2.2,8.2,9.7}
+};
+
+
+
+double[] GetDiagonalPrincipal(double[,] matriz)
+{
+    if(matriz.GetLength(0)!=matriz.GetLength(1))
+        throw new ArgumentException("Matriz no es cuadrada");
+
+    double [] vector = new double [matriz.GetLength(0)];
+    int n = matriz.GetLength(0);
+
+    for(int i=0; i<n; i++)
+    {
+        vector[i] = matriz[i,i];
+    }
+
+    return vector;
+}
+
+double[] GetDiagonalSecundaria(double [,] matriz)
+{
+    if (matriz.GetLength(0) != matriz.GetLength(1))
+        throw new ArgumentException("Matriz no es cuadrada");
+    
+    double [] vector = new double[matriz.GetLength(0)];
+    int n= matriz.GetLength(0);
+
+    for(int i = 0;i<n; i++)
+    {
+        vector[i] = matriz[i,n-1-i];
+    }
+    
+    return vector;
+}
+
+try
+{
+    GetDiagonalPrincipal(matriz);
+    GetDiagonalSecundaria(matriz);
+}
+catch(Exception e)
+{
+    Console.WriteLine(e.Message);
+}
+
+double [] vector = new double[matriz.GetLength(0)];
+vector = GetDiagonalPrincipal(matriz);
+
+for(int i = 0; i < vector.Length; i++)
+{
+    Console.WriteLine(vector[i]);
+}
+
