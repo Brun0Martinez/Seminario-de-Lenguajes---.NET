@@ -1,0 +1,5 @@
+11) Señalar errores de ejecución en el siguiente código
+List<int> a = [ 1, 2, 3, 4 ];
+a.Remove(5); 
+.RemoveAt(4); // error en ejecucion porque quiere eliminar la pos 4 y esta no existe, lista va desde 0 hasta 3 
+
