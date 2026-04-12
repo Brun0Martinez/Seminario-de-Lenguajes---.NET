@@ -1,0 +1,9 @@
+8) Señalar errores de compilación y/o ejecución en el siguiente código
+object obj = new int[10];
+dynamic dyna = 13;
+Console.WriteLine(obj.Length); // object no tiene la propiedad Length
+Console.WriteLine(dyna.Length); // es un entero asique no tiene Length, conpila pero falla en ejecucion
+
+
+
+
