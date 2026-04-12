@@ -5,3 +5,102 @@ ser igual a la cantidad de filas de B, en caso contrario generar una excepción 
 double[,]? Suma(double[,] A, double[,] B)
 double[,]? Resta(double[,] A, double[,] B)
 double[,] Multiplicacion(double[,] A, double[,] B)
+
+using System;
+using System.Globalization;
+
+double[,] A = new double[,]
+{
+    {1.2,3.2,3.2},
+    {1.2,3.2,6.4},
+    {2.2,8.2,9.7}
+};
+
+double[,] B= new double[,]
+{
+    {1.2,3.2,3.2},
+    {1.2,3.2,6.4},
+    {2.2,8.2,9.7}
+};
+
+
+double[,]? Suma(double[,] A, double[,] B)
+{
+    if ((A.GetLength(0) == B.GetLength(0)) && (A.GetLength(1) == B.GetLength(1)))
+    {
+        int f = A.GetLength(0);
+        int c = A.GetLength(1);
+        
+        double[,] matriz = new double[f,c];
+
+        for(int i = 0; i < f; i++)
+        {
+            for(int j = 0; j < c; j++)
+            {
+                matriz[i,j] = A[i,j] + B[i,j];
+            }
+        }
+        return matriz;
+    }
+    else
+    {
+        return null;
+    }
+}
+
+double[,]? Resta(double[,] A, double[,] B)
+{
+    if ((A.GetLength(0) == B.GetLength(0)) && (A.GetLength(1) == B.GetLength(1)))
+    {
+        int f = A.GetLength(0);
+        int c = A.GetLength(1);
+        
+        double[,] matriz = new double[f,c];
+
+        for(int i = 0; i < f; i++)
+        {
+            for(int j = 0; j < c; j++)
+            {
+                if(A[i,j] < B[i, j])
+                {
+                    matriz[i,j] = B[i,j] - A[i,j];    
+                }else
+                    matriz[i,j] = A[i,j] - B[i,j];
+            }
+        }
+        return matriz;
+    }
+    else
+    {
+        return null;
+    }
+}
+
+double[,] Multiplicacion(double[,] A, double[,] B)
+{
+    if(A.GetLength(1) != B.GetLength(0))
+        throw new ArgumentException("No coinciden las columnas de A con las filas de B");
+
+    int c = A.GetLength(1);
+    int f = B.GetLength(0);
+
+    double[,] matriz = new double[c,f];
+
+    for(int i=0; i<c; i++)
+    {
+        for(int j = 0; j < f; j++)
+        {
+            matriz[i,j] = A[i,j] * B[i,j];
+        }
+    }
+    return matriz;
+}
+
+try
+{
+    Multiplicacion(A,B);
+}
+catch(Exception e)
+{
+    Console.WriteLine(e.Message);
+}
