@@ -1,0 +1,18 @@
+9) ¿Qué líneas del siguiente método provocan error de compilación y por qué?
+var a = 3L;
+dynamic b = 32;
+object obj = 3;
+a = a * 2.0; //esta multiplicando un long con un double sin un cast 
+b = b * 2.0;
+b = "hola";
+obj = b;
+b = b + 11;
+obj = obj + 11; //el operador + no se puede aplicar en un obj 
+var c = new { Nombre = "Juan" };
+var d = new { Nombre = "María" };
+var e = new { Nombre = "Maria", Edad = 20 };
+var f = new { Edad = 20, Nombre = "Maria" };
+f.Edad = 22; //no se puede acceder a la edad de esa forma porque no es un campo
+d = c;
+e = d; //distinto tipos porque tienen mas atributos 
+f = e; //lo mismo porque estan al reves 
