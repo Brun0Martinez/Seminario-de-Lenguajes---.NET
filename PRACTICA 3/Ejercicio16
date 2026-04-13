@@ -1,0 +1,16 @@
+16) ¿Qué salida por la consola produce el siguiente código?
+int x = 0;
+try
+{
+Console.WriteLine(1.0 / x);
+Console.WriteLine(1 / x);
+Console.WriteLine("todo OK");
+}
+catch (Exception e)
+{
+Console.WriteLine(e.Message);
+}
+¿Qué se puede inferir respecto de la excepción división por cero en relación al tipo de los operandos?
+
+R: En la primer linea la salida es 8 o un valor al azar porque la division por cero con numeros con decimales no genera error.
+En la segunda linea en cambio si genera una Excepcion de division por cero, e.Message la detecta.
