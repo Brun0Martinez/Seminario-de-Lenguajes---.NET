@@ -1,0 +1,45 @@
+2) Modificar el programa anterior haciendo privados todos los campos. Definir un constructor adecuado
+y un método público Imprimir() que escriba en la consola los campos del objeto con el formato
+requerido para el listado.
+
+using System;
+using System.ComponentModel;
+namespace Teoria4;
+
+public class Persona
+{
+    string nombre;
+    int documento;
+    int edad;
+
+    public Persona(string nombre,int edad, int documento)
+    {
+        this.nombre=nombre;
+        this.edad=edad;
+        this.documento=documento;
+    }
+
+    public void imprimir()
+    {
+        Console.WriteLine(this.nombre+" "+this.edad+" "+this.documento);
+    }
+static void Main(string[] args)
+    {
+        List<Persona> lista = new List<Persona>(); 
+
+        string linea = Console.ReadLine();
+
+        while(linea != "")
+        {
+            string[] partes = linea.Split(',');
+            lista.Add(new Persona(partes[0],int.Parse(partes[1]),int.Parse(partes[2])));
+            linea = Console.ReadLine();
+        }
+        for(int i = 0; i < lista.Count; i++)
+        {
+            Persona p = lista[i];
+            Console.Write((i+1)+")");
+            p.imprimir();
+        }
+    }
+}
