@@ -1,0 +1,47 @@
+1) Definir una clase Persona con 3 campos públicos: Nombre, Edad y DNI. Escribir un algoritmo que
+permita al usuario ingresar en una consola una serie de datos de esta forma:
+Nombre,Documento,Edad <ENTER>.
+
+Una vez finalizada la entrada de datos, el programa debe imprimir en la consola un listado con 4
+columnas de la siguiente forma:
+Nro) Nombre Edad DNI.
+Ejemplo de listado por consola:
+1) Juan Perez 40 2098745
+2) José García 41 1965412
+
+using System;
+using System.ComponentModel;
+namespace Teoria4;
+
+public class Persona
+{
+    public string nombre;
+    public int documento;
+    public int edad;
+
+    public Persona(string nombre, int documento, int edad)
+    {
+        this.nombre=nombre;
+        this.documento=documento;
+        this.edad=edad;
+    }
+
+static void Main(string[] args)
+    {
+        List<Persona> lista = new List<Persona>(); 
+
+        string linea = Console.ReadLine();
+
+        while(linea != "")
+        {
+            string[] partes = linea.Split(',');
+            lista.Add(new Persona(partes[0],int.Parse(partes[1]),int.Parse(partes[2])));
+            linea = Console.ReadLine();
+        }
+        for(int i = 0; i < lista.Count; i++)
+        {
+            Persona p = lista[i];
+            Console.WriteLine((i+1)+")"+p.nombre+" "+p.edad+" "+p.documento);
+        }
+    }
+}
