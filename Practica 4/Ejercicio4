@@ -1,0 +1,33 @@
+4) Codificar la clase Hora de tal forma que el siguiente código produzca la salida por consola que se
+observa.
+
+Hora h = new Hora(23,30,15);
+h.Imprimir
+23 horas, 30 minutos y 15 segundos
+
+namespace Teoria4;
+public class Hora
+{
+    int horas;
+    int minutos;
+    int segundos;
+
+    public Hora(int horas,int minutos, int segundos)
+    {
+        this.horas=horas;
+        this.minutos=minutos;
+        this.segundos=segundos;
+    }
+
+    public void Imprimir()=>
+      Console.WriteLine(this.horas+" horas,"+this.minutos+" minutos,"+this.segundos+" segundos");
+}
+public class Programa
+{
+    static void Main(string[] args)
+    {
+        Hora h = new Hora(23,30,15);
+        h.Imprimir();
+    }
+
+}
