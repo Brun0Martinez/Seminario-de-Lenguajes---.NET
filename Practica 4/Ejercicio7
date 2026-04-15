@@ -1,0 +1,66 @@
+7) Implementar la clase Matriz que se utilizará para trabajar con matrices matemáticas. Implementar los dos
+constructores y todos los métodos que se detallan a continuación:
+
+public Matriz(int filas, int columnas)
+public Matriz(double[,] matriz)
+public void SetElemento(int fila, int columna, double elemento)
+public double GetElemento(int fila, int columna)
+public void imprimir()
+public void imprimir(string formatString)
+public double[] GetFila(int fila)
+public double[] GetColumna(int columna)
+public double[] GetDiagonalPrincipal()
+public double[] GetDiagonalSecundaria()
+public double[][] getArregloDeArreglo()
+public void sumarle(Matriz m)
+public void restarle(Matriz m)
+public void multiplicarPor(Matriz m)
+
+using System;
+using System.Numerics;
+
+namespace Teoria4;
+
+public class Matriz
+{
+    private int filas;
+    private int columnas;
+    private double[,] matriz;
+    public Matriz(int filas,int columnas)
+    {
+        this.filas=filas;
+        this.columnas=columnas;
+    }
+    public Matriz(double[,] matriz)
+    {
+        this.matriz=matriz;
+    }
+
+    public void SetElemento(int fila, int columna,double elemento) =>
+        matriz[fila,columna] = elemento;
+
+    public double GetElemento(int fila, int columna) =>
+        matriz[fila,columna];
+
+    public void Imprimir()
+    {
+        for(int i = 0; i < filas; i++)
+        {
+            for(int j=0; i<columnas; j++)
+            {
+                Console.WriteLine(matriz[i,j]);
+            }
+        }
+    }
+
+    public double[] GetFila(int fila)
+    {
+        double[] vector = new double[this.columnas];
+        for(int i = 0; i < this.columnas; i++)
+        {
+            vector[i]=matriz[fila,i];
+        }
+        return vector;
+    }
+
+}
