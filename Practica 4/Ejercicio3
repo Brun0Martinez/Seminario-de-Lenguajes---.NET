@@ -1,0 +1,62 @@
+3) Agregar a la clase Persona un método EsMayorQue(Persona p) que devuelva verdadero si la
+persona que recibe el mensaje tiene más edad que la persona enviada como parámetro. Utilizarlo para
+realizar un programa que devuelva la persona más jóven de la lista.
+
+using System;
+using System.ComponentModel;
+namespace Teoria4;
+
+public class Persona
+{
+    string nombre;
+    int documento;
+    int edad;
+
+    public Persona(string nombre,int edad, int documento)
+    {
+        this.nombre=nombre;
+        this.edad=edad;
+        this.documento=documento;
+    }
+
+    public void Imprimir()
+    {
+        Console.WriteLine(this.nombre+" "+this.edad+" "+this.documento);
+    }
+
+    public Boolean EsMayorQue(Persona p)=>
+        this.edad > p.edad;
+
+static void Main(string[] args)
+    {
+        List<Persona> lista = new List<Persona>(); 
+
+        string linea = Console.ReadLine();
+
+        while(linea != "")
+        {
+            string[] partes = linea.Split(',');
+            lista.Add(new Persona(partes[0],int.Parse(partes[1]),int.Parse(partes[2])));
+            linea = Console.ReadLine();
+        }
+
+        Persona pMin = lista[0];
+        for(int i = 1; i < lista.Count; i++)
+        {
+            if (pMin.EsMayorQue(lista[i]))
+            {
+                pMin=lista[i];
+            }
+            
+        }
+        Console.Write("La personas con menor edad es: ");
+        pMin.Imprimir();
+
+        for(int i = 0; i < lista.Count; i++)
+        {
+            Persona p = lista[i];
+            Console.Write((i+1)+")");
+            p.Imprimir();
+        }
+    }
+}
