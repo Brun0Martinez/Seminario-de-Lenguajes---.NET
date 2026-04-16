@@ -1,0 +1,7 @@
+8) Prestar atención a los siguientes programas (ninguno funciona correctamente):
+¿Qué se puede decir acerca de la inicialización de los objetos? ¿En qué casos son inicializados
+automáticamente y con qué valor?
+R: El programa A inicializa la variable _bar en un tipo null automaticamente porque es una variable de instancia.
+Se le indica que puede ser de tipo null
+
+En el otro programa al ser bar una variable local no se inicializa automaticamente, por eso no compila.
