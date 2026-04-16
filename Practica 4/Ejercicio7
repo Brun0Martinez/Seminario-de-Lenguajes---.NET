@@ -18,6 +18,7 @@ public void multiplicarPor(Matriz m)
 
 using System;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Teoria4;
 
@@ -63,4 +64,97 @@ public class Matriz
         return vector;
     }
 
+    public double[] GetColumna(int columna)
+    {
+        double[] vector = new double[this.filas];
+        for(int i=0; i< this.filas; i++)
+        {
+            vector[i] = matriz[i,columna];
+        }
+        return vector;
+    }
+
+    double[] GetDiagonalPrincipal()
+    {
+        double [] vector = new double [this.filas];
+        int n = this.filas;
+        for(int i=0; i<n; i++)
+        {
+            vector[i] = matriz[i,i];
+        }
+        return vector;
+    }
+
+    double[] GetDiagonalSecundaria()
+    {
+        double[] vector = new double[this.filas];
+        int n=this.filas;
+        for(int i = 0; i < n; i++)
+        {
+            vector[i]=matriz[i,n-1-i];
+        }
+        return vector;
+    }
+
+    double[][] getArregloDeArreglos()
+    {
+        double[][] arregloDeArreglo = {new double[this.filas], new double[this.columnas]};
+        for(int i = 0; i < this.filas; i++)
+        {
+            for(int j = 0; j < this.columnas; j++)
+            {
+                arregloDeArreglo[i][j]=matriz[i,j];
+            }
+        }
+        return arregloDeArreglo;
+    }
+
+    public void sumarle(Matriz m)
+    {
+        if (m.filas == this.filas && m.columnas==this.columnas)
+        {
+            for(int i = 0; i < this.filas; i++)
+            {
+                for(int j = 0; j < this.columnas; j++)
+                {
+                    this.matriz[i,j] += m.matriz[i,j];
+                }
+            }
+        }
+    }
+
+    public void restarle(Matriz m)
+    {
+        if(m.filas==this.filas && m.columnas == this.columnas)
+        {
+            for(int i = 0; i < this.filas; i++)
+            {
+                for(int j = 0; j < this.columnas; j++)
+                {
+                    this.matriz[i,j]+=m.matriz[i,j];
+                }
+            }
+        }
+    }
+
+    public void multiplicarPor(Matriz m)
+    {
+        if(this.columnas==m.filas)
+        {
+            double[,] aux = new double[this.filas,m.columnas];
+            for(int i = 0; i < this.filas; i++)
+            {
+                for(int j=0; j < m.columnas; j++)
+                {
+                    aux[i,j]=0;
+
+                    for(int k = 0; k < this.columnas; k++)
+                    {
+                        aux[i,j] += this.matriz[i,k] * m.matriz[k,j];
+                    }
+                }
+            }
+            this.matriz = aux;
+        }
+    }
 }
