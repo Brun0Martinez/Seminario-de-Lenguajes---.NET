@@ -1,0 +1,24 @@
+5) Qué líneas del código siguiente provocan error de compilación? Analizar cuándo es posible acceder a
+miembros estáticos y de instancia.
+
+class A
+{
+char c;
+static string st;
+void metodo1()
+{
+st = "string";
+c = 'A';
+}
+static void metodo2()
+{
+1)new ClaseA().c = 'a';
+st = "st2";
+2)c = 'B';
+3)new A().st = "otro string";
+}
+}
+
+Errores: new ClaseA().c = 'a' porque no se puede acceder con el nombre Clase, solo con el nombre de la clase 
+c = 'B' porque C es una variable de instancia, y no estatica 
+new A().st = 'otro string' porque se quiere acceder desde una instancia a un miembro estatico
