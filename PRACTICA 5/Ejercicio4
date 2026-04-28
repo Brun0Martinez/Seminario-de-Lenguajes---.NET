@@ -34,4 +34,96 @@ s_a = a;
 }
 Error: El creador estatico no puede recibir un parametro 
 
-D)
+D)class A
+{
+    static int s_a =0;
+    int a=0;
+    static A()
+    {
+        s_a=30;
+    }
+    A(int a)
+    {
+        s_a=a;
+        this.a=a;
+    }
+}
+
+E) class A {
+static int s_a = 0;
+int a = 0;
+static A() {
+a = 30;
+}
+A(int a) {
+a = s_a;
+}
+}
+Error: En creador estatico no se puede utilizar variables de instancia
+
+F) class A
+{
+static int s_a = 1;
+int a = 0;
+static A() => s_a += s_a;
+public static A GetInstancia() => new A(1);
+A(int a) => this.a = a + s_a;
+}
+Correcto
+
+G) class A
+{
+const double PI = 3.1416;
+static double DoblePI = 2 * PI;
+}
+Correcto
+
+H) class A
+{
+static double PI = 3.1416;
+const double DoblePI = 2*PI;
+}
+Error: Debe ser constate PI, no se puede calcular o depender de asignacion 
+
+I) class A {
+static readonly List<int> _lista;
+static A() {
+_lista = new List<int>();
+}
+public static void P(int i) {
+_lista.Add(i);
+}
+}
+Correcto 
+
+J) class A {
+static readonly List<int> _lista;
+static A() {
+_lista = new List<int>();
+}
+public static void P(List<int> li) {
+_lista = li;
+}
+}
+Error: los campos readonly solo pueden asignarse en un constructor o en su declaracion
+
+K)class A
+{
+static int[] vector = { 1, 2, 3 };
+public int this[int i]
+{
+get { return vector[i]; }
+}
+}
+Correcto
+
+L) class A
+{
+static int[] vector = { 1, 2, 3 };
+public static int this[int i]
+{
+get { return vector[i]; }
+}
+}
+Error: Un indizador no puede ser estatico porque opera sobre objetos de la clase, osea son solo de instancia
+
