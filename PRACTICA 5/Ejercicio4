@@ -1,0 +1,37 @@
+4) Indicar en cada caso si la definición de la clase A es correcta, en caso de no serlo detallar cuál es el
+error.
+
+A)class A {
+static int s_a=0;
+static A() {
+s_a++;
+}
+public A() {
+s_a++;
+}
+}
+Correcto 
+
+B) class A {
+static int s_a = 0;
+public static A() {
+s_a++;
+}
+A() {
+s_a++;
+}
+}
+Error: no se puede tener un creador publico, se definen automaticamente 
+
+C) class A {
+static int s_a = 0;
+static A(int a) {
+s_a=a;
+}
+A(int a) {
+s_a = a;
+}
+}
+Error: El creador estatico no puede recibir un parametro 
+
+D)
