@@ -2,4 +2,4 @@
 a) public int X = 3; y b) public int X => 3;
 
 a) crea un campo x con valor 3 
-b) es una propiedad de solo lectura 
+b) es una propiedad de solo lectura (no hay () y solo es un dato)
