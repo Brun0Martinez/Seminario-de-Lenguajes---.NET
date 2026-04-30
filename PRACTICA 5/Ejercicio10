@@ -1,0 +1,46 @@
+10) Identificar todos los miembros en la siguiente declaración de clase. Indicar si se trata de un
+constructor, método, campo, propiedad o indizador, si es estático o de instancia, y en caso que
+corresponda si es de sólo lectura, sólo escritura o lectura y escritura. En el caso de las propiedades
+indicar también si se trata de una propiedad auto-implementada.
+Nota: La clase compila perfectamente. Sólo prestar atención a la sintaxis, la semántica es irrelevante.
+
+class A
+{
+private static int a;
+private static readonly int b;
+A() { }
+public A(int i) : this() { }
+static A() => b = 2;
+int c;
+public static void A1() => a = 1;
+public int A1(int a) => A.a + a;
+public static int A2;
+static int A3 => 3;
+private int A4() => 4;
+public int A5 { get => 5; }
+int A6 { set => c = value; }
+public int A7 { get; set; }
+public int A8 { get; } = 8;
+public int this[int i] => i;
+}
+
+class A
+{
+private static int a; //campo
+private static readonly int b;//campo estatico de solo lectura 
+A() { } //constructor de instancia
+public A(int i) : this() { } //propiedad que llama al creador de instancia 
+static A() => b = 2; //creador estatico que le asigna b=2 
+int c; //campo privado
+public static void A1() => a = 1; // metodo estatico que pone a=1
+public int A1(int a) => A.a + a; //metodo que suma el campo a con el a recibido como parametro
+public static int A2; //metodo estatico
+static int A3 => 3; //propiedad estatica solo lectura
+private int A4() => 4; //metodo privado
+public int A5 { get => 5; } //propiedad autoimplementado solo lectura
+int A6 { set => c = value; } //propiedad autoimplementada escritura
+public int A7 { get; set; } //propiedad autoimplementada lectura/escritura
+public int A8 { get; } = 8;// propiedad autoimplementada lectura con valor inicial
+
+public int this[int i] => i;// indizador 
+}
