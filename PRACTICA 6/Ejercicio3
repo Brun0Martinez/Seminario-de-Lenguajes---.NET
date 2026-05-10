@@ -1,0 +1,14 @@
+3) ¿Por qué no funciona el siguiente código? ¿Cómo se puede solucionar fácilmente?
+
+class Auto
+{
+double velocidad;
+public virtual void Acelerar() => Console.WriteLine("Velocidad = {0}", velocidad += 10);
+}
+class Taxi : Auto
+{
+public override void Acelerar() => Console.WriteLine("Velocidad = {0}", velocidad += 5);
+}
+
+No funciona porque la clase Taxi no conocia la variable instancia de Auto velocidad y no podia acceder a ella. 
+Con protected podemos accederla y modificarla desde nuestras subclases.
