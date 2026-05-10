@@ -11,4 +11,34 @@ a) Utilizando el operador is
 b) Utilizando el método GetType() y el operador typeof() (investigar sobre éste último en la
 documentación en línea de .net)
 
-a) 
+a) Con is no se puede lograr imprimir porque en la jerarquia C y D heredan de B 
+using Figuras;
+using Automotores;
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        A[] vector = [new C(1),new D(2),new D(4),new B(3),new B(5)];
+        foreach (A a in vector) 
+        {
+            if(a is B){
+                a.Imprimir();
+            }
+        }
+    }   
+}
+
+B)public class Program
+{
+    public static void Main(string[] args)
+    {
+        A[] vector = [new C(1),new D(2),new D(4),new B(3),new B(5)];
+        foreach (A a in vector) 
+        {
+            if(a.GetType() == typeof(B)){
+                a.Imprimir();
+            }
+        }
+    }   
+}
+De esta forma imprimimos solamente el objeto de tipo B
