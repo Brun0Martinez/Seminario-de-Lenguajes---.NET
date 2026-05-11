@@ -1,0 +1,19 @@
+5) ¿Qué líneas del siguiente código provocan error de compilación y por qué?
+
+class Persona
+{
+public string Nombre { get; set; }
+}
+public class Auto
+{
+private Persona _dueño1, _dueño2;
+public Persona GetPrimerDueño() => _dueño1;
+protected Persona SegundoDueño
+{
+set => _dueño2 = value;
+}
+}
+
+Las lineas que producen error de compilacion son public Persona GetPrimerDueño() => _dueño1; porque no
+se puede acceder a la clase Persona por su nivel de proteccion. Lo mismo para la linea de abajo que intenta
+crear una segunda persona.
