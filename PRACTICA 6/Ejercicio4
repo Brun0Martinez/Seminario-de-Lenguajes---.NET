@@ -14,3 +14,19 @@ public Taxi(int pasajeros) => this.Pasajeros = pasajeros;
 }
 ¿Por qué no es necesario agregar :base en el constructor de Taxi? Eliminar el segundo constructor de
 la clase Auto y modificar la clase Taxi para el programa siga funcionando.
+
+R: No es necesario agregar el :base porque la marca ya es definida por la clase Auto como un metodo privado.
+Todos los Autos tendran ese tipo
+class Autos
+{
+public string Marca { get; private set; } = "Ford";
+}
+class Taxis : Autos
+{
+public int Pasajeros { get; private set; }
+public Taxis(int pasajeros)
+    {
+        this.Pasajeros=pasajeros;
+    }
+}
+Borramos ambos constructores y asi solamente recibimos pasajeros porque la Marca la asigna la propiedad 
