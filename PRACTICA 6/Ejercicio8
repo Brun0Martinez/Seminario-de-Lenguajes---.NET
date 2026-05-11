@@ -1,0 +1,73 @@
+namespace Empresa;
+abstract class Empleado
+{
+    public string Nombre{get;}
+    public string Dni{get;}
+    public DateTime FechaDeIngreso{get;}
+    public int SalarioBase{get; protected set;}
+    public abstract  int Salario{get;}
+
+    public Empleado(string nombre,string dni,DateTime fecha,int salario)
+    {
+        Nombre=nombre;
+        Dni=dni;
+        FechaDeIngreso=fecha;
+        SalarioBase=salario;
+    }
+
+     public int Antiguedad
+    {
+        get
+        {
+            DateTime hoy = new DateTime(2022, 4, 9);
+            int años = hoy.Year - FechaDeIngreso.Year;
+
+            if (hoy < FechaDeIngreso.AddYears(años))
+                años--;
+
+            return años;
+        }
+    }
+    public abstract void AumentarSalario();
+}
+
+using Empresa;
+
+class Administrativo:Empleado
+{
+    private int Premio{get;set;}
+    public override int Salario => SalarioBase + Premio;
+
+    public Administrativo(string nombre, string dni, DateTime fecha, int salario)
+        :base(nombre,dni,fecha,salario){}
+
+    public override void AumentarSalario()
+    {
+        SalarioBase += SalarioBase * ((int)0.01 * Antiguedad);
+    }
+    
+}
+
+using Empresa;
+
+class Vendedor : Empleado
+{
+    private int Comision{get;set;}
+    
+    public Vendedor(string nombre,string dni,DateTime fecha, int salario) 
+    : base(nombre, dni, fecha, salario){}
+
+    public override int Salario => SalarioBase + Comision;
+
+    public override void AumentarSalario()
+    {
+        if(Antiguedad < 10)
+        {
+            SalarioBase+=SalarioBase * ((int)0.05*SalarioBase);
+        }
+        else
+        {
+            SalarioBase+=SalarioBase * ((int)0.10*SalarioBase);
+        }
+    }
+}
