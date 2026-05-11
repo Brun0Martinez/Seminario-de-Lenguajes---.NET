@@ -1,0 +1,145 @@
+6) Señalar el error en cada uno de los siguientes casos:
+
+(6,1)
+class A
+{
+public string M1() => "A.M1";
+}
+class B : A
+{
+public override string M1() => "B.M1";
+}
+Error: Falta el virtual que permite a la subclase B modificar utilizar el metodo
+
+
+(6,2)
+class A
+{
+public abstract string M1();
+}
+class B : A
+{
+public override string M1() => "B.M1";
+}
+Error: Hay una metodo abstracto pero no puede existir porque la clase no es abstracta 
+
+(6,3) 
+abstract class A
+{
+public abstract string M1() => "A.M1";
+}
+class B : A
+{
+public override string M1() => "B.M1";
+}
+Error: No puede contener cuerpo el metodo M1 porque es abstracta 
+
+(6,4) 
+class A
+{
+public override string M1() => "A.M1";
+}
+class B : A
+{
+public override string M1() => "B.M1";
+}
+Error: M1 no puede ser override porque no hereda el metodo de nadie, lo crea esa clase
+
+(6,5)
+class A
+{
+public virtual string M1() => "A.M1";
+}
+class B : A
+{
+protected override string M1() => "B.M1";
+}
+Error: M1 de B deberia ser public por el tipo de M1 de A, sino seria como romper el contrato del tipo de A si queremos accederlo
+desde una instacia.
+
+
+(6,6)
+class A
+{
+public static virtual string M1() => "A.M1";
+}
+class B : A
+{
+public static override string M1() => "B.M1";
+}
+Error: Si un miembo es virtual no puede ser static. Virtual mira los objetos, no miembros de clase como static.
+
+(6,7)
+class A
+{
+virtual string M1() => "A.M1";
+}
+class B : A
+{
+override string M1() => "B.M1";
+}
+Error: Los miembros virtual no pueden ser privados. El entorno lo declara privado autom. si no le declaramos un tipo.
+
+(6,8)
+class A
+{
+protected A(int i) { }
+}
+class B : A
+{
+B() { }
+}
+Error: la clase A no tiene un constructor sin parametros al que B pueda llamar, si llamamos con :base debemos enviarle un entero
+que no recibimos.
+
+(6,9)
+class A
+{
+private int _id;
+protected A(int i) => _id = i;
+}
+class B : A
+{
+B(int i):base(5) {
+_id = i;
+}
+}
+Error: el problema es que _id es privada y no se puede acceder desde la clase B de esa forma.
+
+(6,10)
+class A
+{
+private int Propiedad { set; public get; }
+}
+class B : A
+{
+}
+Error: Si definimos la propiedad privada el get debe ser del mismo tipo, no puede ser public.
+
+(6,11) 
+abstract class A
+{
+public abstract int Prop {set; get;}
+}
+class B : A
+{
+public override int Prop
+{
+get => 5;
+}
+}
+Error: Falta el set en la propiedad de clase B.
+
+(6,12)
+abstract class A
+{
+public int Prop {set; get;}
+}
+class B : A
+{
+public override int Prop {
+get => 5;
+set {}
+}
+}
+Error: Falta virtual para invalidar la propiedad en clase B.
