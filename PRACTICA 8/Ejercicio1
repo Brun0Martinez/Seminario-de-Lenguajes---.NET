@@ -1,0 +1,55 @@
+class Program{
+ public static void  Main(String[] args){
+
+    INombrable[] vector = 
+    [
+    new Persona() {Nombre="Zulema"},
+    new Perro() {Nombre="Sultán"},
+    new Persona() {Nombre="Claudia"},
+    new Persona() {Nombre="Carlos"},
+    new Perro() {Nombre="Chopper"},
+    ];
+
+    Array.Sort(vector); //debe ordenar por Nombre alfabéticamente
+
+    foreach (INombrable n in vector){
+    Console.WriteLine($"{n.Nombre}: {n}");
+    }
+    }
+}
+
+public class Persona: INombrable, IComparable 
+{
+    public string? Nombre {get;set;} = "";
+
+    public int CompareTo(object? obj)
+    {
+        INombrable otro = (INombrable)obj!;
+        return Nombre.CompareTo(otro.Nombre);
+    }
+
+    public override string ToString()
+    {
+        return $"{Nombre} es una persona";
+    }
+}
+
+class Perro: INombrable
+{
+    public string? Nombre{get;set;}
+
+    public override string ToString()
+    {
+        return $"{Nombre} es un perro";
+    }
+
+    public int CompareTo(object? obj)
+    {
+        INombrable otro = (INombrable)obj!;
+        return Nombre.CompareTo(otro.Nombre);
+    }
+}
+public interface INombrable: IComparable
+{
+     string? Nombre{get;}
+}
