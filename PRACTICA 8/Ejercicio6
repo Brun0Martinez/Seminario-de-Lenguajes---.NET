@@ -1,0 +1,12 @@
+6) Teniendo en cuenta lo respondido en el ejercicio anterior, ¿Qué salida produce en la consola la
+ejecución del siguiente programa?
+Action[] acciones = new Action[10];
+for (int i = 0; i < 10; i++)
+{
+acciones[i] = () => Console.Write(i + " ");
+}
+foreach (var a in acciones)
+{
+a.Invoke();
+}
+R: Cada salida es 10 porque i sale con 10, entonces el foreach del lambda siemore sale con el valor de i
