@@ -1,0 +1,54 @@
+using System.Collections;
+class Program
+{
+    static void Main()
+    {
+IEnumerable rango = Rango(6, 30, 3);
+IEnumerable potencias = Potencia(2, 10);
+IEnumerable divisibles = DivisiblesPor(rango, 6);
+foreach (int i in rango)
+{
+Console.Write(i + " ");
+}
+Console.WriteLine();
+foreach (int i in potencias)
+{
+Console.Write(i + " ");
+}
+Console.WriteLine();
+foreach (int i in divisibles)
+{
+Console.Write(i + " ");
+}
+    }
+
+    public static IEnumerable Rango(int inicio, int fin, int num)
+    {
+        for(int x=inicio; x <= fin; x+=num)
+        {
+            yield return x;
+        }
+    }    
+
+    public static IEnumerable Potencia(int b, int k)
+    {
+        int potencia = 1;
+        for(int i=1; i<=k; i++)
+        {
+            potencia *= b;
+            yield return potencia;
+        }
+    }
+
+    public static IEnumerable DivisiblesPor(IEnumerable e, int i)
+    {
+        foreach(int n in e)
+        {
+            if(n % i == 0)
+            {
+                yield return n;
+            }
+        }
+    }
+}
+
