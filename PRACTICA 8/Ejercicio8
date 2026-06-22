@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Numerics;
+class Program
+{
+    static void Main()
+    {
+       int[] vector = [1, 2, 3, 4, 5];
+       vector.Print("Valores iniciales: ");
+       var vector2 = vector.Seleccionar(n => n * 3);
+       vector2.Print("Valores triplicados: ");
+       vector.Seleccionar(n => n * n).Print("Cuadrados: ");
+       vector.Donde(n => n % 2 == 0).Print("Pares: ");
+       vector.Donde(n => n % 2 == 1).Seleccionar(n => n * n).Print("Impares al cuadrado: ");
+    }
+}
+
+delegate int FuncionEntera(int n);
+delegate bool Predicado(int n);
+static class VectorDeEnterosExtension
+{
+public static void Print(this int[] vector, string leyenda)
+{
+Console.WriteLine(leyenda + string.Join(", ", vector));
+}
+public static int[] Seleccionar(this int[] vector,FuncionEntera f){
+    int[] resultado = new int[vector.Length];
+    for(int i=0; i < vector.Length; i++)
+        {
+            resultado[i] = f(vector[i]);
+        }
+    return resultado;
+}
+public static int[] Donde(this int[] vector, Predicado p)
+    {
+        List<int> resultado = new List<int>();
+        for(int i = 0; i < vector.Length; i++)
+        {
+            if (p(vector[i]))
+            {
+                resultado.Add(vector[i]);
+            }
+        }
+        return resultado.ToArray();
+    }
+}
