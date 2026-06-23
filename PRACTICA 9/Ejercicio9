@@ -1,0 +1,24 @@
+1) Codificar el método genérico Get para que el siguiente código produzca la salida en la consola
+indicada.
+List<object> lista = [ "hola", 7, 'A' ];
+string st = Get<string>(lista, 0);
+int i = Get<int>(lista, 1);
+char c = Get<char>(lista, 2);
+Console.WriteLine($"{st} {i} {c}");
+
+R: class Program
+{
+    static void Main()
+    {
+        List<object> lista = [ "hola", 7, 'A' ];
+        string st = Get<string>(lista, 0);
+        int i = Get<int>(lista, 1);
+        char c = Get<char>(lista, 2);
+        Console.WriteLine($"{st} {i} {c}");
+    }
+    static T Get<T>(List<Object> lista, int n)
+    {
+        return (T)lista[n];
+    }
+
+}
