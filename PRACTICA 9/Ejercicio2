@@ -1,0 +1,45 @@
+2) Codificar los métodos que faltan para que el siguiente código produzca la salida en la consola
+indicada.
+int[] vector1 = [1, 2, 3];
+bool[] vector2 = [true, true, true];
+string[] vector3 = ["uno", "dos", "tres"];
+Set<int>(vector1, 110, 2);
+Set<bool>(vector2, false, 1);
+Set<string>(vector3, "Hola Mundo!", 0);
+Imprimir(vector1);
+Imprimir(vector2);
+Imprimir(vector3);
+Debe evitarse que durante la ejecución del método Imprimir se produzca boxing o unboxing. Tip El
+método Imprimir también es un método genérico, no se advierte fácilmente porque no se ha
+explicitado el parámetro de tipo (el compilador lo infiere)
+class Program
+{
+    static void Main()
+    {
+        int[] vector1 = [1, 2, 3];
+        bool[] vector2 = [true, true, true];
+        string[] vector3 = ["uno", "dos", "tres"];
+        Set<int>(vector1, 110, 2);
+        Set<bool>(vector2, false, 1);
+        Set<string>(vector3, "Hola Mundo!", 0);
+        Imprimir(vector1);
+        Console.WriteLine();
+        Imprimir(vector2);
+        Console.WriteLine();
+        Imprimir(vector3);
+    }
+    
+    static void Set<T>(T[] vector,T dato,int pos)
+    {
+        vector[pos] = dato;
+    }
+
+    static void Imprimir<T>(T[] vector)
+    {
+        for(int i = 0; i < vector.Length; i++)
+        {
+            Console.Write(vector[i]+ " ");
+        }
+    }
+
+}
