@@ -1,0 +1,101 @@
+4) Dada la siguiente clase genérica
+
+Utilizar la clase Nodo<T> para codificar codificar una lista enlazada genérica tal manera que el código
+siguiente produzca la salida indicada:
+
+85
+
+Práctica sobre la teoría 9
+
+var lista = new ListaEnlazada<int>();
+lista.AgregarAdelante(3);
+lista.AgregarAdelante(100);
+lista.AgregarAtras(10);
+lista.AgregarAtras(11);
+lista.AgregarAdelante(0);
+IEnumerator<int> enumerador = lista.GetEnumerator();
+while (enumerador.MoveNext())
+{
+int i = enumerador.Current;
+Console.Write(i + " ");
+}
+Console.WriteLine();
+
+0 100 3 10 11
+
+Salida por consola
+
+class Nodo<T>
+{
+public T Valor { get; private set; }
+public Nodo<T>? Proximo { get; set; } = null;
+public Nodo(T valor) => Valor = valor;
+}
+
+using System.Diagnostics;
+
+class Program
+{
+    static void Main()
+    {
+        var lista = new ListaEnlazada<int>();
+        lista.AgregarAdelante(3);
+        lista.AgregarAdelante(100);
+        lista.AgregarAtras(10);
+        lista.AgregarAtras(11);
+        lista.AgregarAdelante(0);
+        IEnumerator<int> enumerador = lista.GetEnumerator();
+        while (enumerador.MoveNext())
+    {
+        int i = enumerador.Current;
+        Console.Write(i + " ");
+    }
+        Console.WriteLine();
+    }
+}
+
+class ListaEnlazada<T>
+{
+    private Nodo<T> primero;
+    public void AgregarAdelante(T dato)
+    {
+        Nodo<T> nuevoNodo = new Nodo<T>(dato);
+        nuevoNodo.Proximo = primero;
+        primero = nuevoNodo;
+
+    }
+
+    public void AgregarAtras(T dato)
+    {
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        if(primero == null)
+        {
+            primero = nuevo;
+        }
+        else
+        {
+            Nodo<T> actual = primero;
+            while (actual.Proximo != null)
+            {
+                actual = actual.Proximo;
+            }
+            actual.Proximo = nuevo;
+        }
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        Nodo<T> actual = primero;
+        while (actual != null)
+        {
+            yield return actual.Valor;
+            actual = actual.Proximo;
+        }
+    }
+}
+class Nodo<T>
+{
+public T Valor { get; private set; }
+public Nodo<T>? Proximo { get; set; } = null;
+public Nodo(T valor) => Valor = valor;
+}
