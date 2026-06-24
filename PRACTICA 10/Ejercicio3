@@ -1,0 +1,95 @@
+using System.Linq.Expressions;
+class Program
+{
+    static void Main()
+    {
+        List<Alumno> alumnos = [
+            new Alumno("Juan",1),
+            new Alumno("Ana",2),
+            new Alumno("Andres",3),
+            new Alumno("Paula",4),
+            new Alumno("Sebastian",5),
+            new Alumno("Maria",6),
+            new Alumno("Camila",7),
+            new Alumno("Ivan",8),
+            new Alumno("Raul",9)
+        ];
+
+        List<Examen> examenes = [
+            new Examen(2,5,1),
+            new Examen(4,7,5),
+            new Examen(4,9,3),
+            new Examen(3,10,4),
+            new Examen(7,5,3),
+            new Examen(2,8,4),
+            new Examen(6,9,5),
+            new Examen(9,7,1),
+            new Examen(6,5,4),
+            new Examen(9,1,4),
+            new Examen(7,9,5),
+        ];
+
+        List<Curso> cursos = [
+            new Curso(1,"Ingles"),
+            new Curso(2,"Matematica"),
+            new Curso(3,"Historia"),
+            new Curso(4,"Geografia"),
+            new Curso(5,"Literatura"),
+            new Curso(6,"Contabilidad"),
+        ];
+
+
+        var idsCursos = examenes
+                        .GroupBy(e => e.CursoId)
+                        .Select(grupo => new
+                        {
+                            Titulo = cursos
+                                    .First(c => c.CursoId == grupo.Key)
+                                    .Titulo,
+                            Cantidad = grupo.Count()
+                        })
+                        .OrderBy(x => x.Cantidad);
+
+
+        foreach(var c in idsCursos)
+        {
+            Console.WriteLine(c);
+        }
+    }
+}
+
+C)var consulta = examenes
+                       .Select(e => new
+                       {
+                            Alumno = alumnos.First(a => a.AlumnoId == e.AlumnoId).Nombre,
+                            Curso = cursos.First(c => c.CursoId ==e.CursoId).Titulo,
+                            e.Nota
+                       }
+                       );
+
+D)var consulta = examenes
+                       .Select(e => new
+                       {
+                            Alumno = alumnos.First(a => a.AlumnoId == e.AlumnoId).Nombre,
+                            Curso = cursos.First(c => c.CursoId ==e.CursoId).Titulo,
+                            e.Nota
+                       })
+                       .Where(x => x.Nota >=6)
+                       .OrderBy(x => x.Nota);
+
+E)var consulta = alumnos
+                       .Where(a => !examenes.Any(e => e.AlumnoId == a.AlumnoId));
+            
+        foreach(var c in consulta)
+        {
+            Console.WriteLine(c.Nombre);
+        }
+
+F)var consulta = examenes
+                        .GroupBy(e => e.AlumnoId)
+                        .Select(grupo => new
+                        {   
+                            Alumno = alumnos
+                                    .First(a => a.AlumnoId == grupo.Key).Nombre,
+                            Promedio = grupo.Average(e => e.Nota)
+                        });
